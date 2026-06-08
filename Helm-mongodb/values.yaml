@@ -11,7 +11,7 @@ image:
 # endpoints:
   
 ###### PORTS #######
-  ports :
+ports :
    containerPort: 27017
    servicePort: 27017
      

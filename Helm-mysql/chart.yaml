@@ -4,3 +4,4 @@ description: A Helm chart for Kubernetes-based deployment of the mysql component
 type: application
 version: 1.0.0 # chart version
 appVersion: 1.0.0 # version of the application being deployed
+### Chart.yaml is the file which defines the metadata of the chart. It contains information about the chart such as its name, version, description, and other relevant details. This file is essential for Helm to understand the chart and its purpose.

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.component.name }}-headless
+  namespace: {{ .Values.component.namespace }}
+spec:
+  clusterIP: None
+  selector:
+    app: {{ .Values.component.name }}
+    project: {{ .Values.component.project }}
+  ports:
+    - port: {{ .Values.ports.servicePort}}
+      targetPort: {{ .Values.ports.containerPort }}

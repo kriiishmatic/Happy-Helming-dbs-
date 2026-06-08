@@ -1,0 +1,29 @@
+component :
+  name : mysql
+  environment: dev
+  namespace: roboshop
+  replicas: 1
+
+image:
+  repository: "854481201869.dkr.ecr.us-east-1.amazonaws.com/stackly/mysql"
+  tag: "1.0.0"
+
+endpoints:
+  MYSQL_ROOT_PASSWORD: RoboShop@1
+  
+
+
+### Resource limits and requests for the catalogue component#####
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+  ###### PORTS #######
+  ports :
+   containerPort: 3306
+   servicePort: 3306
+   

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.component.name }}
+  namespace: {{ .Values.component.namespace }}
+spec:
+  serviceName: {{ .Values.component.name }}-headless
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: {{ .Values.component.name }}
+      project: {{ .Values.component.project }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.component.name }}
+        project: {{ .Values.component.project }}
+
+    spec:
+      containers:
+      - name: {{ .Values.component.name }}
+        image: {{ .Values.image.repository}}:{{ .Values.image.tag }}
+
+        ports:
+        - containerPort: {{ .Values.ports.containerPort }}
+
+        envFrom:
+        - secretRef:
+            name: {{ .Values.component.name }}-secret
+        volumeMounts:
+        - name: {{ .Values.component.name }}-data
+          mountPath: /var/lib/rabbitmq
+
+  volumeClaimTemplates:
+  - metadata:
+      name: {{ .Values.component.name }}-data
+    spec:
+      storageClassName: ebs-dynamic-{{ .Values.component.name }}-sc
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 5Gi

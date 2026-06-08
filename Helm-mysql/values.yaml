@@ -11,7 +11,10 @@ image:
 endpoints:
   MYSQL_ROOT_PASSWORD: RoboShop@1
   
-
+ports :
+   containerPort: 3306
+   servicePort: 3306
+   
 
 ### Resource limits and requests for the catalogue component#####
 resources:
@@ -23,7 +26,4 @@ resources:
     memory: 256Mi
 
   ###### PORTS #######
-  ports :
-   containerPort: 3306
-   servicePort: 3306
-   
+  

@@ -1,4 +1,4 @@
-apiVersion : V2
+apiVersion : v2
 name: mongodb
 description: A Helm chart for Kubernetes-based deployment of the mongodb component of the roboshop application
 type: application

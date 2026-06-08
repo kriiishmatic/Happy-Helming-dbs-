@@ -9,8 +9,12 @@ image:
   tag: "1.0.0"
 
 endpoints:
-  
-  
+
+  ###### PORTS #######
+ports :
+  containerPort: 27017
+  servicePort: 27017 
+
 
 
 ### Resource limits and requests for the catalogue component#####
@@ -22,8 +26,5 @@ resources:
     cpu: 250m
     memory: 256Mi
 
-  ###### PORTS #######
-  ports :
-   containerPort: 27017
-   servicePort: 27017
+
    

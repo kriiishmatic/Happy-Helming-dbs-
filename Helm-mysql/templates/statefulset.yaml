@@ -43,3 +43,13 @@ spec:
       resources:
         requests:
           storage: 10Gi
+    affinity:
+      podantiaffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - dbs
+          topologyKey: "kubernetes.io/zone"

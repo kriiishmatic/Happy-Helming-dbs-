@@ -26,9 +26,7 @@ spec:
         ports:
         - containerPort: {{ .Values.ports.containerPort }}
 
-        envFrom:
-        - secretRef:
-            name: {{ .Values.component.name }}-secret
+
         volumeMounts:
         - name: {{ .Values.component.name }}-data
           mountPath: /data
